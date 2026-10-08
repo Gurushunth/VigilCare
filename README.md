@@ -1,4 +1,4 @@
-# PatientShield
+# Vigilcare
 
 The independent, offline-first health transparency and emergency shield for patients and caregivers. Hackathon prototype.
 
@@ -8,7 +8,7 @@ The independent, offline-first health transparency and emergency shield for pati
   2. Bedside consultation translator: scripted rounds plus a basic offline paste mode
   3. Printed invoice and drug auditor: sample bill or on-device OCR, duplicate-drug and price checks
 
-> PatientShield is a hackathon prototype. It does not provide medical diagnosis or treatment advice. In an emergency call 112 or 108.
+> viglecare is a hackathon prototype. It does not provide medical diagnosis or treatment advice. In an emergency call 112 or 108.
 
 ## Run it
 
