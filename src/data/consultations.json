@@ -1,0 +1,74 @@
+[
+  {
+    "id": "fever-recovery",
+    "title": "Day 3: fever settling, planning a scan",
+    "patient": "Mrs A. (fictional), 68",
+    "doctor": "Dr K. (fictional), Medicine",
+    "transcript": "Patient is haemodynamically stable and afebrile since morning. We will switch IV antibiotics to oral, repeat CBC and CRP tomorrow, and keep NPO after midnight for the USG abdomen. Watch for desaturation or reduced urine output.",
+    "summary": {
+      "changed": [
+        "Her blood pressure and heart rate are steady.",
+        "She has had no fever since this morning."
+      ],
+      "next": [
+        "Antibiotics move from the drip to tablets by mouth, a sign she is improving.",
+        "Blood tests for infection (CBC and CRP) will be repeated tomorrow.",
+        "No food or drink after midnight, because of a stomach ultrasound scan tomorrow."
+      ],
+      "watch": [
+        "Tell the nurse if her breathing changes or the oxygen reading on the monitor drops.",
+        "Tell the nurse if she is passing much less urine than usual."
+      ]
+    }
+  },
+  {
+    "id": "cardiac-stepdown",
+    "title": "Day 2 after a heart scare: moving out of ICU",
+    "patient": "Mr R. (fictional), 72",
+    "doctor": "Dr S. (fictional), Cardiology",
+    "transcript": "Troponin has trended down and the repeat ECG shows no new changes. He is off oxygen support with SpO2 of 97 percent on room air. Plan to step down to the ward today, get a 2D echo tomorrow, and start him on ambulation with physio. Taper the IV diuretic to oral. If he has chest pain, breathlessness on lying flat, or tachycardia, call us stat.",
+    "summary": {
+      "changed": [
+        "The heart damage marker in his blood is going down.",
+        "His heart tracing shows no new problems.",
+        "He no longer needs extra oxygen; his oxygen level is a healthy 97%."
+      ],
+      "next": [
+        "He moves from intensive care to a normal ward today.",
+        "A heart ultrasound (echo) is planned for tomorrow.",
+        "The physiotherapist will help him start walking.",
+        "His water tablet moves from the drip to tablets by mouth, at a slowly reducing dose."
+      ],
+      "watch": [
+        "Call staff at once if he has any chest pain.",
+        "Call staff if he gets breathless when lying flat.",
+        "Call staff if his heart is racing."
+      ]
+    }
+  },
+  {
+    "id": "diabetes-infection",
+    "title": "Day 4: foot infection and sugar control",
+    "patient": "Mrs P. (fictional), 61",
+    "doctor": "Dr M. (fictional), Endocrinology",
+    "transcript": "Blood culture is sterile and the wound is granulating well. HbA1c came back at 9.2, so sugars have been poorly controlled. We are adding basal insulin at night and continuing metformin. Creatinine is stable. Plan dressing change on alternate days and discharge likely in 48 hours if she remains afebrile. Watch for fever, spreading redness around the wound, or sugars below 70.",
+    "summary": {
+      "changed": [
+        "No germs grew in her blood test, which is good news.",
+        "The foot wound is healing well.",
+        "Her three-month sugar test is high (9.2), so her diabetes has not been well controlled.",
+        "Her kidney test is steady."
+      ],
+      "next": [
+        "A night-time insulin injection is being added. She continues metformin tablets.",
+        "The wound dressing will be changed every other day.",
+        "She may go home in about two days if she stays free of fever."
+      ],
+      "watch": [
+        "Tell staff about any fever.",
+        "Tell staff if redness spreads around the wound.",
+        "Tell staff if a sugar reading is below 70, or if she feels shaky, sweaty or confused."
+      ]
+    }
+  }
+]
