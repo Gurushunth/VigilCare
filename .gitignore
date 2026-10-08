@@ -44,3 +44,6 @@ next-env.d.ts
 /public/tesseract/
 # generated service worker precache manifest
 /public/sw-manifest.js
+
+# local git bundle backups
+*.bundle
