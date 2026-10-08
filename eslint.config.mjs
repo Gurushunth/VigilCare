@@ -19,6 +19,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated or vendored at build time
+    "public/tesseract/**",
+    "public/sw-manifest.js",
   ]),
 ]);
 

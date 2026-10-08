@@ -270,6 +270,11 @@ function ItemsEditor({
 }) {
   return (
     <div className="space-y-3">
+      <div aria-hidden className="grid grid-cols-[1fr_1fr_1fr_2.75rem] gap-2 px-3 text-xs font-semibold uppercase tracking-wide text-muted sm:hidden">
+        <span>Qty</span>
+        <span>Rate ₹</span>
+        <span>Amount ₹</span>
+      </div>
       <div className="hidden grid-cols-[minmax(0,1fr)_4.5rem_5.5rem_5.5rem_2.75rem] gap-2 px-1 text-xs font-semibold uppercase tracking-wide text-muted sm:grid">
         <span>Item</span>
         <span>Qty</span>
@@ -280,14 +285,14 @@ function ItemsEditor({
       {rows.map((r, idx) => (
         <div
           key={r.id}
-          className="grid grid-cols-3 gap-2 rounded-xl border border-line p-2 sm:grid-cols-[minmax(0,1fr)_4.5rem_5.5rem_5.5rem_2.75rem] sm:border-0 sm:p-0"
+          className="grid grid-cols-[1fr_1fr_1fr_2.75rem] gap-2 rounded-xl border border-line p-2 sm:grid-cols-[minmax(0,1fr)_4.5rem_5.5rem_5.5rem_2.75rem] sm:border-0 sm:p-0"
         >
           <Input
             aria-label={`Item ${idx + 1} name`}
             value={r.name}
             placeholder="Item name"
             onChange={(e) => onChange(r.id, { name: e.target.value })}
-            className="col-span-3 sm:col-span-1"
+            className="col-span-4 sm:col-span-1"
           />
           <Input
             aria-label={`Item ${idx + 1} quantity`}
@@ -308,8 +313,7 @@ function ItemsEditor({
             onChange={(e) => onChange(r.id, { unitPrice: Number(e.target.value) || 0 })}
             className="px-2 tabular-nums"
           />
-          <div className="flex gap-2 sm:contents">
-            <Input
+          <Input
               aria-label={`Item ${idx + 1} amount in rupees`}
               type="number"
               inputMode="decimal"
@@ -319,10 +323,9 @@ function ItemsEditor({
               onChange={(e) => onChange(r.id, { amount: Number(e.target.value) || 0 })}
               className="px-2 tabular-nums"
             />
-            <Button variant="ghost" size="icon" onClick={() => onRemove(r.id)} aria-label={`Remove item ${idx + 1}`}>
-              <Trash2 aria-hidden />
-            </Button>
-          </div>
+          <Button variant="ghost" size="icon" onClick={() => onRemove(r.id)} aria-label={`Remove item ${idx + 1}`}>
+            <Trash2 aria-hidden />
+          </Button>
         </div>
       ))}
     </div>
@@ -359,8 +362,24 @@ function AuditResults({ result }: { result: AuditResult }) {
           <CardDescription>Plain-language purpose for every line, from our offline medicine list.</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[560px] text-left text-[15px]">
+          <ul className="space-y-3 sm:hidden">
+            {result.items.map((i, n) => (
+              <li key={n} className="rounded-xl border border-line p-3">
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="font-semibold text-ink">{i.name}</span>
+                  <span className="tabular-nums text-ink">{formatINR(i.amount)}</span>
+                </div>
+                {i.activeIngredient && (
+                  <p className="text-sm text-muted">
+                    <span className="capitalize">{i.activeIngredient}</span> · {i.drugClass}
+                  </p>
+                )}
+                <p className="mt-1 text-[15px] text-ink">{i.purpose}</p>
+              </li>
+            ))}
+          </ul>
+          <div className="hidden sm:block">
+            <table className="w-full text-left text-[15px]">
               <thead>
                 <tr className="border-b border-line text-xs uppercase tracking-wide text-muted">
                   <th scope="col" className="py-2 pr-3 font-semibold">Item</th>
@@ -478,7 +497,7 @@ function DoseBar({ combined, limit }: { combined: number; limit: number }) {
   return (
     <div className="mt-4" aria-hidden="true">
       <div className="relative mb-1 h-5 text-xs font-semibold tabular-nums text-ink">
-        <span className="absolute -translate-x-full pr-1" style={{ left: `${limitPct}%` }}>
+        <span className="absolute -translate-x-full whitespace-nowrap pr-1" style={{ left: `${limitPct}%` }}>
           {limit / 1000} g adult limit
         </span>
       </div>

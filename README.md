@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PatientShield
 
-## Getting Started
+The independent, offline-first health transparency and emergency shield for patients and caregivers. Hackathon prototype.
 
-First, run the development server:
+- `/`: landing page (problem, three-phase journey, comparison, architecture, principles)
+- `/demo`: three live screens that run entirely in the browser, including in airplane mode
+  1. Emergency and dead-zone mode: rule-based triage, CPR metronome, lock-screen passport preview
+  2. Bedside consultation translator: scripted rounds plus a basic offline paste mode
+  3. Printed invoice and drug auditor: sample bill or on-device OCR, duplicate-drug and price checks
+
+> PatientShield is a hackathon prototype. It does not provide medical diagnosis or treatment advice. In an emergency call 112 or 108.
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install          # also copies Tesseract assets into public/tesseract
+npm test             # auditor, triage and translator unit tests
+npm run build        # next build, then generates the service worker precache list
+npm start            # serve the production build on http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Always present from a production build (`npm run build && npm start`). The service worker is only registered in production and does not behave reliably under `next dev`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pitch-day checklist
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. `npm run build && npm start`, open `http://localhost:3000` once **while online** and wait a few seconds (the service worker caches about 20 MB, including the OCR engine).
+2. Open `/demo` once too. Then turn on airplane mode and reload: both pages and all three screens keep working.
+3. Presenter keys on `/demo`: **1**, **2**, **3** switch screens; **Reset demo** clears saved data and resets every screen.
+4. Replace the placeholder prices in `src/data/priceReference.json` with verified figures (and set `verified`, `source`, `asOf`). Until then the site labels them as placeholders.
+5. Fill in team details in the brief if you want a team section; it is left off while they are placeholders.
 
-## Learn More
+## Notes and deviations from the brief
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js 16.4, not 15.** The repository was already scaffolded with Next 16.4 (Turbopack, Cache Components). We kept it rather than downgrade; App Router APIs used here are the same. See `node_modules/next/dist/docs/`.
+- **shadcn/ui components are hand-written** in `src/components/ui` on the same Radix primitives, because the shadcn registry was unreachable from the build environment.
+- **On-device voice is opt-in.** `SpeechRecognition.available({ processLocally: true })` crashed the tab in the bundled Chromium, so the demo only probes it when the user presses "Try on-device voice (experimental)". Typing and the four scenario chips always work.
+- **Reduced motion** hides the hero particles entirely.
+- **OCR**: Tesseract reads the rupee sign as a leading digit (`₹60` → `360`); the parser repairs this and the user can correct any line before auditing.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Where things live
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Path | What |
+| --- | --- |
+| `src/data/*.json` | Drugs, placeholder price references, sample bill, triage rules, glossary, consultations |
+| `src/lib/auditor.ts` | Pure audit functions and bill-text parser (tests in `auditor.test.ts`) |
+| `src/lib/triage.ts`, `src/lib/consult.ts` | Triage rules engine and translator helpers (with tests) |
+| `src/components/demo/` | The three demo screens |
+| `src/components/landing/` | Hero, particles and landing sections |
+| `public/sw.js`, `scripts/gen-sw-manifest.mjs` | Service worker and its generated precache list |
+| `scripts/copy-tesseract.mjs` | Self-hosts the Tesseract worker, LSTM cores and English data |
+| `assets/sample-bill.svg` | Source of `public/sample-bill.png` (fictional hospital) |

@@ -46,7 +46,7 @@ export default function HeroParticles({ deadZone, reducedMotion }: Props) {
           width: 1,
         },
         move: {
-          enable: !reducedMotion,
+          enable: true,
           speed: 0.6,
           direction: "none",
           random: false,
@@ -57,14 +57,14 @@ export default function HeroParticles({ deadZone, reducedMotion }: Props) {
       interactivity: {
         detectsOn: "window",
         events: {
-          onHover: { enable: !reducedMotion && !deadZone, mode: "grab" },
+          onHover: { enable: !deadZone, mode: "grab" },
         },
         modes: {
           grab: { distance: 160, links: { opacity: 0.35 } },
         },
       },
     }),
-    [deadZone, reducedMotion, isSmall],
+    [deadZone, isSmall],
   );
 
   // Belt and braces on top of pauseOnBlur / pauseOnOutsideViewport:
@@ -75,7 +75,7 @@ export default function HeroParticles({ deadZone, reducedMotion }: Props) {
     let visible = true;
     const sync = () => {
       const c = containerRef.current;
-      if (!c || reducedMotion) return;
+      if (!c) return;
       if (visible && document.visibilityState === "visible") c.play();
       else c.pause();
     };
@@ -94,13 +94,13 @@ export default function HeroParticles({ deadZone, reducedMotion }: Props) {
   const onLoaded = useMemo(
     () => async (container?: Container) => {
       containerRef.current = container;
-      // Reduced motion: draw one static frame, then stop the loop.
-      if (reducedMotion && container) {
-        requestAnimationFrame(() => container.pause());
-      }
     },
-    [reducedMotion],
+    [],
   );
+
+  // Reduced motion: no particles at all (the brief allows "a static frame or nothing";
+  // nothing is the option that is guaranteed not to move).
+  if (reducedMotion) return null;
 
   return (
     <div
