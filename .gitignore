@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# self-hosted tesseract assets (copied by scripts/copy-tesseract.mjs)
+/public/tesseract/
+# generated service worker precache manifest
+/public/sw-manifest.js
+
+# local git bundle backups
+*.bundle

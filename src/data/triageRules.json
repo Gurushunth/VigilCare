@@ -1,0 +1,117 @@
+{
+  "_note": "Deterministic keyword rules for the demo. Any critical match wins. Unrecognised input defaults to urgent. Not a diagnostic tool.",
+  "critical": [
+    {
+      "id": "stroke",
+      "label": "Possible stroke signs",
+      "keywords": [
+        "face droop", "face drooping", "face is drooping", "drooping face", "face droops", "facial droop", "mouth drooping", "one side of face",
+        "arm weakness", "weak arm", "arm is weak", "cannot lift arm", "can't lift arm", "can't lift his arm", "can't lift her arm", "one side weak", "numb on one side", "weakness on one side",
+        "slurred speech", "speech is slurred", "slurring", "speech slurred", "cannot speak", "can't speak", "trouble speaking",
+        "sudden vision loss", "lost vision", "cannot see", "can't see", "sudden blurred vision", "double vision",
+        "loss of balance", "lost balance", "balance loss", "cannot walk straight", "sudden dizziness",
+        "worst headache", "sudden severe headache"
+      ]
+    },
+    {
+      "id": "heart",
+      "label": "Possible heart attack signs",
+      "keywords": [
+        "chest pressure", "chest pain", "pain in chest", "tight chest", "chest tightness", "crushing chest", "heavy chest",
+        "pain spreading to arm", "pain spreading to left arm", "spreading to her left arm", "spreading to his left arm", "spreading to arm", "pain in left arm", "pain to the jaw", "jaw pain", "spreading to jaw",
+        "cold sweat", "sweating heavily", "sweating a lot", "she is sweating", "he is sweating"
+      ]
+    },
+    {
+      "id": "breathing",
+      "label": "Acute breathing distress",
+      "keywords": [
+        "can't breathe", "cannot breathe", "not breathing", "struggling to breathe", "gasping", "choking",
+        "severe breathlessness", "very breathless", "short of breath", "shortness of breath", "breathless", "lips turning blue", "blue lips"
+      ]
+    },
+    {
+      "id": "unresponsive",
+      "label": "Unresponsive or collapsed",
+      "keywords": ["unconscious", "unresponsive", "collapsed", "not responding", "fainted and not waking", "no pulse", "seizure", "fitting", "convulsion"]
+    },
+    {
+      "id": "bleeding",
+      "label": "Severe bleeding",
+      "keywords": ["heavy bleeding", "bleeding heavily", "won't stop bleeding", "will not stop bleeding", "vomiting blood", "coughing blood"]
+    }
+  ],
+  "urgent": [
+    {
+      "id": "fever-vomiting",
+      "label": "High fever with vomiting",
+      "keywords": ["high fever", "fever", "102", "103", "104", "vomiting", "vomited", "throwing up"],
+      "differentials": [
+        { "label": "Viral fever", "percent": 50 },
+        { "label": "Gastroenteritis (stomach infection)", "percent": 30 },
+        { "label": "Dengue or another mosquito-borne fever", "percent": 20 }
+      ]
+    },
+    {
+      "id": "injury",
+      "label": "Injury that needs checking",
+      "keywords": ["fracture", "broken bone", "deep cut", "fell down", "fall", "swollen ankle", "sprain", "burn"],
+      "differentials": [
+        { "label": "Sprain or soft tissue injury", "percent": 55 },
+        { "label": "Fracture (broken bone)", "percent": 35 },
+        { "label": "Dislocation", "percent": 10 }
+      ]
+    },
+    {
+      "id": "abdominal",
+      "label": "Persistent stomach pain",
+      "keywords": ["stomach pain", "abdominal pain", "belly pain", "severe stomach", "pain in abdomen"],
+      "differentials": [
+        { "label": "Gastritis or acidity", "percent": 45 },
+        { "label": "Gastroenteritis", "percent": 35 },
+        { "label": "Appendicitis (needs urgent check)", "percent": 20 }
+      ]
+    }
+  ],
+  "routine": [
+    {
+      "id": "headache",
+      "label": "Mild headache",
+      "keywords": ["mild headache", "headache", "head ache", "head is aching"],
+      "differentials": [
+        { "label": "Tension headache", "percent": 60 },
+        { "label": "Dehydration", "percent": 30 },
+        { "label": "Sinusitis", "percent": 10 }
+      ]
+    },
+    {
+      "id": "cold",
+      "label": "Common cold symptoms",
+      "keywords": ["runny nose", "sneezing", "blocked nose", "sore throat", "mild cough", "cold"],
+      "differentials": [
+        { "label": "Common cold (viral)", "percent": 70 },
+        { "label": "Allergy", "percent": 20 },
+        { "label": "Sinusitis", "percent": 10 }
+      ]
+    },
+    {
+      "id": "acidity",
+      "label": "Mild acidity",
+      "keywords": ["acidity", "heartburn", "indigestion", "gas", "bloating"],
+      "differentials": [
+        { "label": "Acidity / reflux", "percent": 65 },
+        { "label": "Indigestion", "percent": 25 },
+        { "label": "Gastritis", "percent": 10 }
+      ]
+    }
+  ],
+  "fallback": {
+    "message": "We could not classify this. If in doubt, treat it as urgent."
+  },
+  "scenarios": [
+    { "label": "Face drooping, slurred speech", "text": "My father's face is drooping on one side and his speech is slurred." },
+    { "label": "Chest pressure, sweating", "text": "My mother has chest pressure spreading to her left arm and she is sweating." },
+    { "label": "High fever, vomiting", "text": "My son has had a high fever of 102 since yesterday and has been vomiting." },
+    { "label": "Mild headache", "text": "I have a mild headache since this afternoon and drank very little water today." }
+  ]
+}

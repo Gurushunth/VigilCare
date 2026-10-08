@@ -1,0 +1,135 @@
+{
+  "_note": "Seed data for the hackathon demo. Brands are mapped to their active ingredient for duplicate detection. Not prescribing guidance.",
+  "ingredientLimits": {
+    "paracetamol": {
+      "maxDailyMg": 4000,
+      "basis": "Commonly cited adult limit of 4 g in 24 hours"
+    },
+    "ibuprofen": {
+      "maxDailyMg": 2400,
+      "basis": "Commonly cited adult prescription limit of 2.4 g in 24 hours"
+    }
+  },
+  "drugs": [
+    {
+      "brand": "Dolo 650",
+      "aliases": ["dolo 650", "dolo-650", "dolo650", "dolo"],
+      "activeIngredient": "paracetamol",
+      "strengthMg": 650,
+      "drugClass": "Analgesic / antipyretic",
+      "purpose": "Brings down fever and eases mild to moderate pain.",
+      "typicalMaxDosesPerDay": 4
+    },
+    {
+      "brand": "Calpol 500",
+      "aliases": ["calpol 500", "calpol-500", "calpol500", "calpol"],
+      "activeIngredient": "paracetamol",
+      "strengthMg": 500,
+      "drugClass": "Analgesic / antipyretic",
+      "purpose": "Brings down fever and eases mild to moderate pain.",
+      "typicalMaxDosesPerDay": 4
+    },
+    {
+      "brand": "Pantoprazole 40 mg",
+      "aliases": ["pantoprazole 40", "pantoprazole", "pantop 40", "pan 40"],
+      "activeIngredient": "pantoprazole",
+      "strengthMg": 40,
+      "drugClass": "Proton pump inhibitor (acid reducer)",
+      "purpose": "Lowers stomach acid to prevent or treat acidity and ulcers.",
+      "typicalMaxDosesPerDay": 2
+    },
+    {
+      "brand": "Ondansetron 4 mg",
+      "aliases": ["ondansetron 4", "ondansetron", "ondem 4"],
+      "activeIngredient": "ondansetron",
+      "strengthMg": 4,
+      "drugClass": "Anti-emetic (anti-nausea)",
+      "purpose": "Stops nausea and vomiting.",
+      "typicalMaxDosesPerDay": 3
+    },
+    {
+      "brand": "Omeprazole 20 mg",
+      "aliases": ["omeprazole 20", "omeprazole", "omez 20"],
+      "activeIngredient": "omeprazole",
+      "strengthMg": 20,
+      "drugClass": "Proton pump inhibitor (acid reducer)",
+      "purpose": "Lowers stomach acid to prevent or treat acidity and ulcers.",
+      "typicalMaxDosesPerDay": 2
+    },
+    {
+      "brand": "Rabeprazole 20 mg",
+      "aliases": ["rabeprazole 20", "rabeprazole"],
+      "activeIngredient": "rabeprazole",
+      "strengthMg": 20,
+      "drugClass": "Proton pump inhibitor (acid reducer)",
+      "purpose": "Lowers stomach acid to prevent or treat acidity and ulcers.",
+      "typicalMaxDosesPerDay": 2
+    },
+    {
+      "brand": "Ibuprofen 400 mg",
+      "aliases": ["ibuprofen 400", "ibuprofen"],
+      "activeIngredient": "ibuprofen",
+      "strengthMg": 400,
+      "drugClass": "NSAID (anti-inflammatory painkiller)",
+      "purpose": "Reduces pain, swelling and fever.",
+      "typicalMaxDosesPerDay": 3
+    },
+    {
+      "brand": "Diclofenac 50 mg",
+      "aliases": ["diclofenac 50", "diclofenac"],
+      "activeIngredient": "diclofenac",
+      "strengthMg": 50,
+      "drugClass": "NSAID (anti-inflammatory painkiller)",
+      "purpose": "Reduces pain, swelling and fever.",
+      "typicalMaxDosesPerDay": 3
+    },
+    {
+      "brand": "Azithromycin 500 mg",
+      "aliases": ["azithromycin 500", "azithromycin", "azee 500"],
+      "activeIngredient": "azithromycin",
+      "strengthMg": 500,
+      "drugClass": "Antibiotic (macrolide)",
+      "purpose": "Treats certain bacterial infections. Does not work on viral fevers or colds.",
+      "typicalMaxDosesPerDay": 1
+    },
+    {
+      "brand": "Amoxicillin 500 mg",
+      "aliases": ["amoxicillin 500", "amoxicillin", "mox 500"],
+      "activeIngredient": "amoxicillin",
+      "strengthMg": 500,
+      "drugClass": "Antibiotic (penicillin)",
+      "purpose": "Treats certain bacterial infections. Does not work on viral fevers or colds.",
+      "typicalMaxDosesPerDay": 3
+    },
+    {
+      "brand": "Cetirizine 10 mg",
+      "aliases": ["cetirizine 10", "cetirizine"],
+      "activeIngredient": "cetirizine",
+      "strengthMg": 10,
+      "drugClass": "Antihistamine (anti-allergy)",
+      "purpose": "Relieves allergy symptoms such as sneezing, itching and rash.",
+      "typicalMaxDosesPerDay": 1
+    },
+    {
+      "brand": "Metformin 500 mg",
+      "aliases": ["metformin 500", "metformin"],
+      "activeIngredient": "metformin",
+      "strengthMg": 500,
+      "drugClass": "Antidiabetic (biguanide)",
+      "purpose": "Helps control blood sugar in type 2 diabetes.",
+      "typicalMaxDosesPerDay": 3
+    }
+  ],
+  "supplies": [
+    {
+      "name": "IV set",
+      "aliases": ["iv set", "iv infusion set", "infusion set", "iv administration set"],
+      "purpose": "Tubing used to give fluids or medicines through a vein (drip)."
+    },
+    {
+      "name": "Surgical gloves (pair)",
+      "aliases": ["surgical gloves", "gloves", "examination gloves", "surgical gloves (pair)"],
+      "purpose": "Sterile gloves worn by staff during procedures. Usually one pair per procedure."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "_note": "PLACEHOLDER FIGURES. Replace with real NPPA ceiling prices or verified MRP references before the pitch. Every entry is verified: false and must never be presented as a verified regulatory cap.",
+  "items": [
+    {
+      "item": "Dolo 650",
+      "unit": "tablet",
+      "referencePrice": 2.04,
+      "basis": "Typical MRP reference",
+      "source": "Placeholder, to be replaced",
+      "asOf": "2026-10-01",
+      "verified": false
+    },
+    {
+      "item": "Calpol 500",
+      "unit": "tablet",
+      "referencePrice": 2.0,
+      "basis": "Typical MRP reference",
+      "source": "Placeholder, to be replaced",
+      "asOf": "2026-10-01",
+      "verified": false
+    },
+    {
+      "item": "Pantoprazole 40 mg",
+      "unit": "tablet",
+      "referencePrice": 9.0,
+      "basis": "NPPA ceiling price",
+      "source": "Placeholder, to be replaced",
+      "asOf": "2026-10-01",
+      "verified": false
+    },
+    {
+      "item": "Ondansetron 4 mg",
+      "unit": "tablet",
+      "referencePrice": 5.0,
+      "basis": "NPPA ceiling price",
+      "source": "Placeholder, to be replaced",
+      "asOf": "2026-10-01",
+      "verified": false
+    },
+    {
+      "item": "IV set",
+      "unit": "set",
+      "referencePrice": 150,
+      "basis": "Typical MRP reference",
+      "source": "Placeholder, to be replaced",
+      "asOf": "2026-10-01",
+      "verified": false
+    },
+    {
+      "item": "Surgical gloves (pair)",
+      "unit": "pair",
+      "referencePrice": 20,
+      "basis": "Typical MRP reference",
+      "source": "Placeholder, to be replaced",
+      "asOf": "2026-10-01",
+      "verified": false
+    }
+  ]
+}

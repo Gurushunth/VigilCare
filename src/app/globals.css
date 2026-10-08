@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * PatientShield design tokens. Light theme only.
+ * Green, amber and red are reserved for risk tiers and audit alerts.
+ */
+@theme {
+  --color-page: #f6fafa;
+  --color-surface: #ffffff;
+  --color-ink: #0f2a33;
+  --color-muted: #51666e;
+  --color-line: #d9e5e7;
+  --color-line-strong: #b9cdd1;
+
+  --color-primary: #0e7c86;
+  --color-primary-hover: #0a646c;
+  --color-primary-soft: #e3f3f4;
+  --color-primary-ink: #075359;
+
+  /* Risk tiers: text colours are AA on white and on their soft backgrounds */
+  --color-safe: #157a3d;
+  --color-safe-soft: #e5f5eb;
+  --color-safe-line: #9fd5b2;
+  --color-warn: #8a4b00;
+  --color-warn-icon: #b25e00;
+  --color-warn-soft: #fff4dc;
+  --color-warn-line: #f3c873;
+  --color-danger: #b42318;
+  --color-danger-soft: #fdecea;
+  --color-danger-line: #f2aca5;
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, sans-serif;
+
+  --radius-card: 1rem;
+  --shadow-soft: 0 1px 2px rgb(15 42 51 / 0.04), 0 4px 16px rgb(15 42 51 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(15 42 51 / 0.05), 0 12px 32px rgb(15 42 51 / 0.1);
+
+  --animate-pulse-beat: pulse-beat 0.25s ease-out;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes pulse-beat {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.wave-bar {
+  animation: wave 0.9s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/*
+ * Hero particles never sit behind body text. Mobile: only the top band
+ * (behind the badge and headline). Desktop: only the right-hand side,
+ * around the preview card. Both fade out at the hero's bottom edge.
+ */
+.hero-particles-mask {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 160px, transparent 300px);
+  mask-image: linear-gradient(to bottom, #000 0, #000 160px, transparent 300px);
+}
+
+@media (min-width: 1024px) {
+  .hero-particles-mask {
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, transparent 38%, #000 58%),
+      linear-gradient(to bottom, #000 60%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0%, transparent 38%, #000 58%),
+      linear-gradient(to bottom, #000 60%, transparent 100%);
+    mask-composite: intersect;
+  }
 }

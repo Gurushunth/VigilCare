@@ -5,6 +5,13 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    rules: {
+      // Plain <a> between / and /demo on purpose: full document navigations are
+      // served by the service worker offline; soft navigations need an RSC fetch.
+      "@next/next/no-html-link-for-pages": "off",
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
@@ -12,6 +19,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated or vendored at build time
+    "public/tesseract/**",
+    "public/sw-manifest.js",
   ]),
 ]);
 

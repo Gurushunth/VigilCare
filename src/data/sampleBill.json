@@ -1,0 +1,16 @@
+{
+  "_note": "Seeded sample bill from a fictional hospital. Matches public/sample-bill.png (source: assets/sample-bill.svg) line for line.",
+  "hospital": "Sunrise Demo Hospital (fictional)",
+  "billNumber": "SDH-PH-24-0917",
+  "date": "2026-10-06",
+  "patient": "Demo Patient (fictional)",
+  "items": [
+    { "name": "Dolo 650 Tablet", "quantity": 15, "unitPrice": 2, "amount": 30 },
+    { "name": "Calpol 500 Tablet", "quantity": 15, "unitPrice": 2, "amount": 30 },
+    { "name": "Pantoprazole 40 mg Tablet", "quantity": 10, "unitPrice": 9, "amount": 90 },
+    { "name": "Ondansetron 4 mg Tablet", "quantity": 10, "unitPrice": 5, "amount": 50 },
+    { "name": "IV Set", "quantity": 1, "unitPrice": 150, "amount": 150 },
+    { "name": "Surgical gloves (pair)", "quantity": 10, "unitPrice": 60, "amount": 600 }
+  ],
+  "total": 950
+}
