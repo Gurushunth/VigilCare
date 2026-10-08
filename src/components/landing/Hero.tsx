@@ -30,7 +30,7 @@ export function Hero() {
             A quiet second opinion on every hospital decision.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
-            PatientShield helps families in an emergency or a hospital stay: it guides you before help arrives, translates the
+            VigilCare helps families in an emergency or a hospital stay: it guides you before help arrives, translates the
             doctor&rsquo;s round into plain words, and checks printed bills for duplicate drugs and overcharges. It works with no
             signal.
           </p>

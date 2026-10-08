@@ -273,13 +273,13 @@ export function CompareSection() {
       {/* Desktop / tablet: table */}
       <div className="mt-10 hidden overflow-hidden rounded-card border border-line md:block">
         <table className="w-full text-left text-[15px]">
-          <caption className="sr-only">Comparison of PatientShield with health record apps and symptom checkers</caption>
+          <caption className="sr-only">Comparison of VigilCare with health record apps and symptom checkers</caption>
           <thead className="bg-page">
             <tr>
               <th scope="col" className="w-[18%] p-4 font-semibold text-muted">Dimension</th>
               <th scope="col" className="w-[22%] p-4 font-semibold text-ink">Health record apps</th>
               <th scope="col" className="w-[22%] p-4 font-semibold text-ink">Symptom checkers</th>
-              <th scope="col" className="bg-primary p-4 font-bold text-white">PatientShield</th>
+              <th scope="col" className="bg-primary p-4 font-bold text-white">VigilCare</th>
             </tr>
           </thead>
           <tbody>
@@ -314,7 +314,7 @@ export function CompareSection() {
                 <dd className="text-ink">{b}</dd>
               </div>
               <div className="rounded-xl bg-primary-soft p-3">
-                <dt className="text-xs font-bold uppercase tracking-wide text-primary-ink">PatientShield</dt>
+                <dt className="text-xs font-bold uppercase tracking-wide text-primary-ink">VigilCare</dt>
                 <dd className="font-semibold text-ink">{ps}</dd>
               </div>
             </dl>
@@ -411,7 +411,7 @@ const PRINCIPLES: { icon: LucideIcon; title: string; text: string }[] = [
   {
     icon: Stethoscope,
     title: "Not a doctor",
-    text: "PatientShield never diagnoses or prescribes. It gives facts and ranges, labels what is illustrative, and always points to professional care.",
+    text: "VigilCare never diagnoses or prescribes. It gives facts and ranges, labels what is illustrative, and always points to professional care.",
   },
   {
     icon: HandHeart,

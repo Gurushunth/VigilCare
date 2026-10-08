@@ -22,7 +22,7 @@ const SCREENS = [
 type ScreenValue = (typeof SCREENS)[number]["value"];
 
 /** Fired on every tab change so screens can stop audio or playback when hidden. */
-const SCREEN_EVENT = "patientshield:screen"; // also used in useScreenHidden.ts
+const SCREEN_EVENT = "vigilcare:screen"; // also used in useScreenHidden.ts
 
 function announceScreen(value: ScreenValue) {
   window.dispatchEvent(new CustomEvent<ScreenValue>(SCREEN_EVENT, { detail: value }));
@@ -66,7 +66,7 @@ export function DemoShell() {
     <TooltipProvider>
       <header className="sticky top-0 z-40 border-b border-line/80 bg-page/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-2 px-4 sm:px-6">
-          <a href="/" className="flex shrink-0 items-center gap-1 rounded-lg" aria-label="Back to PatientShield overview">
+          <a href="/" className="flex shrink-0 items-center gap-1 rounded-lg" aria-label="Back to VigilCare overview">
             <ArrowLeft className="size-4 text-muted" aria-hidden />
             <Logo className="[&>span:last-child]:hidden sm:[&>span:last-child]:inline" />
           </a>

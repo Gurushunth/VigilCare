@@ -1,5 +1,5 @@
 /** Tiny localStorage wrapper. Every access is guarded: private windows can throw. */
-export const STORAGE_PREFIX = "patientshield:";
+export const STORAGE_PREFIX = "vigilcare:";
 
 export function loadJSON<T>(key: string, fallback: T): T {
   try {

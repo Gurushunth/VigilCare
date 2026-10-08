@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
- * PatientShield design tokens. Light theme only.
+ * VigilCare design tokens. Light theme only.
  * Green, amber and red are reserved for risk tiers and audit alerts.
  */
 @theme {

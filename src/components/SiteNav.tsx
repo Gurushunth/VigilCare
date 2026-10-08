@@ -21,7 +21,7 @@ export function SiteNav() {
   return (
     <header className="sticky top-0 z-40 border-b border-line/80 bg-page/90 backdrop-blur-md">
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6">
-        <a href="/" className="shrink-0 rounded-lg" aria-label="PatientShield home">
+        <a href="/" className="shrink-0 rounded-lg" aria-label="VigilCare home">
           <Logo />
         </a>
         <ul className="ml-6 hidden items-center gap-1 lg:flex">

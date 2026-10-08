@@ -2,7 +2,7 @@ import { Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const DISCLAIMER =
-  "PatientShield is a hackathon prototype. It does not provide medical diagnosis or treatment advice. In an emergency call 112 or 108.";
+  "VigilCare is a hackathon prototype. It does not provide medical diagnosis or treatment advice. In an emergency call 112 or 108.";
 
 export function Disclaimer({ className }: { className?: string }) {
   return (

@@ -29,7 +29,7 @@ export function EmergencyScreen() {
       <ScreenIntro
         eyebrow="Phase 1 · Before the hospital"
         title="Emergency and dead-zone mode"
-        text="Describe what is happening in your own words. PatientShield sorts it into one of three urgency levels using fixed safety rules on this device, then tells you what to do while you wait."
+        text="Describe what is happening in your own words. VigilCare sorts it into one of three urgency levels using fixed safety rules on this device, then tells you what to do while you wait."
       />
 
       <Card className="border-2 border-primary/30">

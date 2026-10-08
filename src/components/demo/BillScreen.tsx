@@ -113,7 +113,7 @@ export function BillScreen() {
       <ScreenIntro
         eyebrow="Phase 3 · After the hospital"
         title="Printed invoice and drug auditor"
-        text="Scan a printed pharmacy bill. PatientShield decodes every medicine, spots the same drug sold under two brand names, and compares prices with a reference. Everything runs on this device."
+        text="Scan a printed pharmacy bill. VigilCare decodes every medicine, spots the same drug sold under two brand names, and compares prices with a reference. Everything runs on this device."
       />
 
       <div className="grid gap-4 sm:grid-cols-2">

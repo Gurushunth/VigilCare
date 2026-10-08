@@ -1,9 +1,10 @@
 // Generates public/sw-manifest.js after `next build`: every URL the service
 // worker must precache so a full reload works with the network off.
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { join, relative, sep } from "node:path";
+import { dirname, join, relative, sep } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = join(new URL(".", import.meta.url).pathname, "..");
+const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const nextDir = join(root, ".next");
 const publicDir = join(root, "public");
 

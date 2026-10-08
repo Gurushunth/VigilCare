@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const SCREEN_EVENT = "patientshield:screen";
+const SCREEN_EVENT = "vigilcare:screen";
 
 /** Calls `onHidden` whenever the presenter switches away from `screen`. */
 export function useScreenHidden(screen: string, onHidden: () => void) {

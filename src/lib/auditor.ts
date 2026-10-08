@@ -1,5 +1,5 @@
 /**
- * PatientShield bill and drug auditor.
+ * VigilCare bill and drug auditor.
  *
  * Pure functions only: no I/O, no randomness, no dates. The same input always
  * produces the same alerts, which is what we need on stage.

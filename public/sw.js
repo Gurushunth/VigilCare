@@ -1,9 +1,9 @@
-/* PatientShield service worker: precache the whole app so a full reload
+/* VigilCare service worker: precache the whole app so a full reload
  * works with the network off. Precache list: /sw-manifest.js (generated
  * after `next build` by scripts/gen-sw-manifest.mjs). */
 importScripts("/sw-manifest.js");
 
-const CACHE = `patientshield-${self.__PS_BUILD_ID}`;
+const CACHE = `vigilcare-${self.__PS_BUILD_ID}`;
 const PRECACHE = self.__PS_PRECACHE || [];
 const NAV_TIMEOUT_MS = 3000;
 
@@ -31,7 +31,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
       const keys = await caches.keys();
-      await Promise.all(keys.filter((k) => k.startsWith("patientshield-") && k !== CACHE).map((k) => caches.delete(k)));
+      await Promise.all(keys.filter((k) => k.startsWith("vigilcare-") && k !== CACHE).map((k) => caches.delete(k)));
       await self.clients.claim();
     })(),
   );

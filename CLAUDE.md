@@ -1,8 +1,8 @@
 @AGENTS.md
 
-# PatientShield: standing rules
+# VigilCare: standing rules
 
-PatientShield is our 24-hour hackathon entry: the independent, offline-first
+VigilCare is our 24-hour hackathon entry: the independent, offline-first
 health transparency and emergency shield for patients and caregivers. The site
 has a landing page (`/`) and a live demo (`/demo`) that is run on stage, partly
 in airplane mode. **Reliability on stage beats breadth.** Prefer scripted,
@@ -51,5 +51,5 @@ deterministic behaviour with honest labels over clever behaviour that can fail.
 - Placeholder prices are never presented as verified regulatory caps; show
   basis and as-of date next to every price comparison.
 - Never name competitor products; use category names.
-- Disclaimer: "PatientShield is a hackathon prototype. It does not provide
+- Disclaimer: "VigilCare is a hackathon prototype. It does not provide
   medical diagnosis or treatment advice. In an emergency call 112 or 108."

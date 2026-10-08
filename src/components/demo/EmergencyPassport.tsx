@@ -171,7 +171,7 @@ export function EmergencyPassport() {
           ) : (
             <div className="space-y-4">
               <p className="text-[16px] leading-relaxed text-ink">
-                In an emergency, paramedics and hospital staff check the phone&rsquo;s lock screen for medical details. PatientShield keeps
+                In an emergency, paramedics and hospital staff check the phone&rsquo;s lock screen for medical details. VigilCare keeps
                 the essentials there, so the family does not have to remember them in a panic.
               </p>
               <p className="rounded-xl bg-page p-3 text-sm text-muted">

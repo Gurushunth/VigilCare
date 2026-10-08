@@ -16,7 +16,7 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "PatientShield: offline health transparency and emergency shield",
+  title: "VigilCare: offline health transparency and emergency shield",
   description:
     "The independent, offline-first health transparency and emergency shield for patients and caregivers. Hackathon prototype.",
 };

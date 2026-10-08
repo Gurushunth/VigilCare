@@ -38,7 +38,7 @@ export function ConsultScreen() {
       <ScreenIntro
         eyebrow="Phase 2 · In the hospital"
         title="Bedside consultation translator"
-        text="Doctors' rounds are quick and full of jargon. PatientShield turns a round into three plain-English answers the family can act on, and explains each medical term."
+        text="Doctors' rounds are quick and full of jargon. VigilCare turns a round into three plain-English answers the family can act on, and explains each medical term."
       />
       <div className="inline-flex rounded-xl border border-line bg-surface p-1 shadow-soft" role="group" aria-label="Translator mode">
         <button
