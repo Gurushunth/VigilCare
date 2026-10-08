@@ -117,6 +117,36 @@ describe("parseBillText", () => {
     ]);
   });
 
+  it("repairs the rupee sign misread as a leading digit (real Tesseract output)", () => {
+    expect(parseBillText("6 Surgical gloves (pair) x 10 at 360 = 3600")).toEqual([
+      { name: "Surgical gloves (pair)", quantity: 10, unitPrice: 60, amount: 600 },
+    ]);
+  });
+
+  it("parses real Tesseract output of the sample bill image into the same audit result", () => {
+    const ocr = [
+      "SUNRISE DEMO HOSPITAL",
+      "(FICTIONAL - FOR DEMONSTRATION ONLY)",
+      "In-patient Pharmacy, 12 Example Road, Demo City",
+      "PHARMACY BILL",
+      "Bill No: SDH-PH-24-0917 Date: 06-10-2026",
+      "Patient: Demo Patient (fictional) Ward: 3B",
+      "# Description Qty Rate Amount",
+      "1 Dolo 650 Tablet 15 2.00 30.00",
+      "2 Calpol 500 Tablet 15 2.00 30.00",
+      "3 Pantoprazole 40 mg Tablet 10 9.00 90.00",
+      "4 Ondansetron 4 mg Tablet 10 5.00 50.00",
+      "5 IV Set 1 150.00 150.00",
+      "6 Surgical gloves (pair) x 10 at 360 = 3600",
+      "TOTAL %950.00",
+      "Prices inclusive of GST where applicable.",
+      "Amount in words: Nine hundred fifty rupees only.",
+    ].join("\n");
+    const items = parseBillText(ocr);
+    expect(items).toEqual(sampleBill.items);
+    expect(auditBill(items).summary).toBe("2 issues found, ₹400 potential overcharge.");
+  });
+
   it("round-trips the sample bill text into the same audit result", () => {
     const text = sampleBill.items
       .map((i, n) => `${n + 1} ${i.name} ${i.quantity} ${i.unitPrice.toFixed(2)} ${i.amount.toFixed(2)}`)

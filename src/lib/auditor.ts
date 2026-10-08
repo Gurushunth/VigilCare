@@ -302,14 +302,14 @@ export function parseBillText(text: string): BillItem[] {
   const skip = /\b(total|subtotal|sub total|gst|cgst|sgst|tax|discount|amount in words|balance|paid|bill no|invoice|date|patient|qty|rate|description)\b/i;
 
   for (const rawLine of text.split(/\r?\n/)) {
-    const line = rawLine.replace(/[₹]|rs\.?|inr/gi, " ").replace(/\s+/g, " ").trim();
+    const line = rawLine.replace(/[₹%]|\brs\.?|\binr\b/gi, " ").replace(/\s+/g, " ").trim();
     if (line.length < 4 || skip.test(line)) continue;
 
     // "Name x 10 at 60 = 600"
     const xAt = line.match(new RegExp(String.raw`^(.+?)\s*[x×*]\s*${NUM}\s*(?:@|at)\s*${NUM}\s*=\s*${NUM}$`, "i"));
     if (xAt) {
       const [, name, q, r, a] = xAt;
-      items.push(clean(name, toNumber(q), toNumber(r), toNumber(a)));
+      items.push(clean(name, toNumber(q), toNumber(r), toNumber(a), !rawLine.includes("₹")));
       continue;
     }
 
@@ -328,7 +328,45 @@ export function parseBillText(text: string): BillItem[] {
   return items;
 }
 
-function clean(name: string, quantity: number, unitPrice: number, amount: number): BillItem {
+/** OCR often reads the rupee sign as a leading "3", "2" or "7". */
+function withoutLeadingDigit(n: number): number | null {
+  const s = String(n);
+  return s.length > 1 && /^[237]/.test(s) ? Number(s.slice(1)) : null;
+}
+
+/**
+ * Pick the reading of rate and amount for which quantity × rate = amount,
+ * trying each with a misread rupee sign removed. Falls back to the raw values.
+ */
+export function reconcile(
+  quantity: number,
+  unitPrice: number,
+  amount: number,
+  /** In "x 10 at ₹60 = ₹600" lines both numbers carry a rupee sign, so prefer the stripped reading. */
+  rupeePrefixed = false,
+): { unitPrice: number; amount: number } {
+  if (rupeePrefixed) {
+    const r = withoutLeadingDigit(unitPrice);
+    const a = withoutLeadingDigit(amount);
+    const sameLead = String(unitPrice)[0] === String(amount)[0];
+    if (sameLead && r && a && Math.abs(round2(quantity * r) - a) < 0.01) return { unitPrice: r, amount: a };
+  }
+  const rates = [unitPrice, withoutLeadingDigit(unitPrice)].filter((x): x is number => x !== null);
+  const amounts = [amount, withoutLeadingDigit(amount)].filter((x): x is number => x !== null);
+  for (const r of rates) {
+    for (const a of amounts) {
+      if (Math.abs(round2(quantity * r) - a) < 0.01) return { unitPrice: r, amount: a };
+    }
+  }
+  return { unitPrice, amount };
+}
+
+function clean(name: string, quantity: number, rawUnitPrice: number, rawAmount: number, rupeePrefixed = false): BillItem {
+  const { unitPrice, amount } = reconcile(quantity, rawUnitPrice, rawAmount, rupeePrefixed);
   const fixedAmount = amount > 0 ? amount : round2(quantity * unitPrice);
-  return { name: name.replace(/[|:]+$/, "").trim(), quantity, unitPrice, amount: fixedAmount };
+  const cleanName = name
+    .replace(/^\d{1,2}[.)]?\s+/, "")
+    .replace(/[|:]+$/, "")
+    .trim();
+  return { name: cleanName, quantity, unitPrice, amount: fixedAmount };
 }

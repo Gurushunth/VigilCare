@@ -1,5 +1,5 @@
 {
-  "_note": "Seeded sample bill from a fictional hospital. Matches public/sample-bill.svg line for line.",
+  "_note": "Seeded sample bill from a fictional hospital. Matches public/sample-bill.png (source: assets/sample-bill.svg) line for line.",
   "hospital": "Sunrise Demo Hospital (fictional)",
   "billNumber": "SDH-PH-24-0917",
   "date": "2026-10-06",
